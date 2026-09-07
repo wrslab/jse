@@ -1,0 +1,108 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+ <title>PATH</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body bgcolor="#EEEEEE">
+
+<h1>PATH</h1>
+
+
+センターで使用している Linux (UNIX)では，全てのファイル構造は１つの木構造
+でまとめられます．<p>
+
+<img src="./path.jpg"><p>
+
+<li>絶対PATH
+<ul>絶対PATHは，ファイルの場所を特定するために，rootから指定する方法です<br>
+    rootは"/"から始まるので，通常" / "から始まります．<br>
+    例えば，上の図中の"ks"というディレクトリを指すためには，<p>
+    <ul>
+    /home/toyonaka/ks
+    </ul><p>
+    というように表現します．
+
+</ul>
+<li>相対PATH
+<ul>今自分のいるディレクトリから相対的に場所を特定する方法です．<br>
+    いま，自分のいるディレクトリは "./" で表され，また，一つ上のディレクトリ
+    を"../"と表します．<br>
+    例えば，今上の図中で"ks"というところに居るとすると，"home"ディレクトリは<p>
+    <ul>
+    ../../
+    </ul><p>
+    で表されます．また，"sci"は<p>
+    <ul>
+    ../sci
+    </ul><p>
+    となります．しかし，もし今いる場所(カレントディレクトリという)が"suita"
+    の場合，例えば"../../"はルートディレクトリを表すようになり，カレントディレクトリ
+    の場所によって，指す場所が変わってしまいます．<p>
+</ul>
+<hr>
+
+HTMLにおいて，リンク等でURLを完全に指定することは，絶対パスを指定することにほぼ対応します．<br>
+これに対して，自分のディレクトリ内部については，相対PATH(この時，カレントディレクトリ
+は，そのPATHを書いてあるファイルのあるディレクトリ)を用いてもファイルを指定することができます．<br>
+
+HTMLでは，http://webserver/~ks-008hm(各人のログイン名)/ が public_html ディレクトリに対応します．<br>
+<p>
+<img src="./path2.jpg">
+<p>
+私（login 名 ks-008hm）のpublic_htmlディレクトリがwwwで公開されていたとします．
+そして，public_htmlの中には，index.html，mypage.html，の2つのファイルとmydataの１つのディレクトリ
+があるとします．<br>
+また，mydataディレクトリには，mypage2.htmlとgraph.jpgの２つのファイルがあったとします．
+</p>
+これを，木構造で表すと
+<p>
+<img src="./path3.jpg">
+</p>
+<p>
+このとき，それぞれのファイルやディレクトリのURLは
+</p>
+<p>
+<table border>
+<tr><th>ファイル＆ディレクトリ名</th><th>URL</th></tr>
+<tr><td>public_htmlディレクトリ</td><td>http://webserver/~ks-008hm/</td></tr>
+<tr><td>index.html</td><td>http://webserver/~ks-008hm/index.html<br>ただし，http://webserver/~ks-008hm/と省略可</td></tr>
+<tr><td>mypage.html</td><td>http://webserver/~ks-008hm/mypage.html</td></tr>
+<tr><td>mydataディレクトリ</td><td>http://webserver/~ks-008hm/mydata/</td></tr>
+<tr><td>mypage2.html</td><td>http://webserver/~ks-008hm/mydata/mypage2.html</td></tr>
+<tr><td>graph.jpg</td><td>http://webserver/~ks-008hm/mydata/graph.jpg</td></tr>
+</table>
+</p>
+となります．<br>
+
+<p>
+さて，index.htmlからみれば，mypage.hmlは同じディレクトリ（public_html）内にあります．<br>
+したがって，<font color="blue"> index.html </font>からは，<font color="blue"> mypage.html</font>を<font color="red">&lt a href="mypage.html"&gt </font>で参照できます．<br>
+同様に，<font color="blue"> mypage.html </font>からは，<font color="blue"> index.html</font>を<font color="red">&lt a href="index.html"&gt </font>で参照できます．
+</p>
+<p>
+index.htmlからみれば，同じディレクトリ（public_html）内にあるmydataディレクトリの中にmypage2.hmlが存在します．<br>
+したがって，<font color="blue"> index.html </font>からは，<font color="blue"> mypage2.html</font>を<font color="red">&lt a href="/mydata/mypage.html"&gt </font>で参照できます．<br>
+<font color="blue"> mypage.html </font>からも，<font color="blue"> mypage2.html</font>を<font color="red">&lt a href="/mydata/mypage.html"&gt </font>で参照できます．<br>
+</p>
+<p>
+mypage2.htmlからみれば，同じディレクトリ（mydata）の外にmypage.hmlが存在します．<br>
+したがって，<font color="blue"> mypage2.html </font>からは，<font color="blue"> mypage.html</font>を<font color="red">&lt a href="../mypage.html"&gt </font>で参照できます．<br>
+../ は一つ外のディレクトリを意味します．
+</p>
+<p>
+相対的なパスを用いるメリットは，ファイル等をディレクトリごと他のディレクトリへコピーしても，そのまま動作することです！！
+</p>
+<p>
+できるだけ，相対的なパスを用いましょう．
+</p>
+
+<a href="../../index.html">戻る</a>
+<hr />
+このページへのお問い合わせは君塚(<a href="mailto:kimizuka[atmark]me.es.osaka-u.ac.jp">
+kimizuka[atmark]me.es.osaka-u.ac.jp</a>)まで<br />
+
+<br />$Last Updated: Sep 25 2008 $
+
+</body>
+</html>

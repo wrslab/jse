@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>handyGraphicsの描画範囲</title>
+  </head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <body>
+    <h1>handyGraphicsの描画範囲</h1>
+
+HandyGraphicの仕様のため、描画ウィンドウを越えた非常に大きな値をウィンドウ座標に指定する
+と、変な位置に描画されることがあります。<br>例えば、
+<hr><ul><pre>
+#include &lt;stdio.h>
+#include &lt;math.h>
+#include &lt;handy.h>
+
+#define  PI     3.141592653589793
+#define WIDTH   500.0
+#define HEIGHT  500.0
+
+int  main(void)
+{
+    int w;
+    double x, y, dx;
+    double A, B, C;
+
+    w = HgWOpen( 100.0, 100.0, WIDTH, HEIGHT );
+    
+    dx = 0.1;
+    A = 1.0;
+    B = 1.0;
+    C = 0.0;
+    for( x = 0.0 ; x &lt; WIDTH ; x = x + 0.1 ){
+        y = A * x * x + B * x + C;
+        HgCircleFill( x, y, 2.0 );
+    }
+
+    getchar();
+
+    return( 0 );
+}
+
+
+
+</ul></pre>を実行すると<p>
+<img src="./hg_area0.jpg"><p>
+<hr>
+この場合、以下のようにif文を使って描画範囲を制限することで対処できます。
+<ul><pre>
+#include &lt;stdio.h>
+#include &lt;math.h>
+#include &lt;handy.h>
+
+#define  PI     3.141592653589793
+#define WIDTH   500.0
+#define HEIGHT  500.0
+
+int  main(void)
+{
+    int w;
+    double x, y, dx;
+    double A, B, C;
+
+    w = HgWOpen( 100.0, 100.0, WIDTH, HEIGHT );
+    
+    dx = 0.1;
+    A = 1.0;
+    B = 1.0;
+    C = 0.0;
+    for( x = 0.0 ; x &lt; WIDTH ; x = x + 0.1 ){
+        y = A * x * x + B * x + C;
+        if( ( x >= 0.0 && x &lt; WIDTH ) && ( y >= 0.0 && y &lt; HEIGHT ) ){
+            HgCircleFill( x, y, 2.0 );
+	}
+    }
+    getchar();
+    return( 0 );
+}
+</ul></pre><p>
+
+<img src="./hg_area1.jpg"><p>
+    <hr>
+<!-- Created: Thu Dec  7 02:08:36 GMT 2000 -->
+<!-- hhmts start -->
+Last modified: Thu Dec  7 02:45:21 GMT 2000
+<!-- hhmts end -->
+  </body>
+</html>

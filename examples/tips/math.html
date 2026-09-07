@@ -1,0 +1,388 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Mathematical Function in C Language</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body bgcolor="#EEEEEE">
+
+<h1> C 言語で使える数学関数</h1>
+
+<H5>
+このページは、1997 年度の情報処理演習で升谷先生が作成された教材を元に作
+成されてます。
+</h5>
+以下は、C言語の標準ライブラリに含まれる数学関数の一覧です。
+ただし △はこの演習の範囲外なので使いません。
+以下の関数を1つでも使う場合には，必ず，
+<ul>
+ <li> プログラムの最初に「<TT>#include &lt;math.h&gt;」と書く.<br />
+      (システムで用意された <tt>math.h</tt> というファイルを読み込むため
+      の命令) 
+ <li> コンパイル時に，数学関数を用いるためのオプション
+      -lm が必要．
+</ul>
+ということをしなければなりません。<br />
+
+<a href="../index.html">戻る</a>
+
+<hr />
+<P>
+<DL>
+<DT> <font color="#ff0000">■ <TT>sqrt( x )</tt> ■</font>
+<DD> <TT>x</tt> の平方根(SQuare RooT)を求めます。ただし x ≧ 0.0 という
+実数でなければなりません。
+<DD> 例 
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+
+int 
+main( void )
+{
+    double x, y;
+    
+    x = 2.0;
+    y = sqrt( x );
+    printf( "%f の平方根は %f です\n", x, y );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+<font color="#ff0000"><DT> ■ <TT>fmod( x, y )</tt> ■</font>
+<DD> x / y の剰余．x を y で割ったときの余り(Float MODulo)を求める
+関数の実数バージョンです。
+<DD> 例 
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+
+int 
+main( void )
+{
+    double x, y, z;
+
+    x = 15.6;
+    y = 4.2;	
+    z = fmod( x, y );
+    printf( "%f を %f で割った余りは %f です\n", x, y, z );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+<font color="#ff0000"><DT> ■ <TT>pow( x, y )</tt> ■</font>
+<DD> x の y 乗 (POWer)を求めます。
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+
+int 
+main( void )
+{
+    double x, y, z;
+
+    x = 5.0;
+    y = 3.0;	
+    z = pow( x, y );
+    printf( "%f の %f 乗は %f です\n", x, y, z );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+<font color="#ff0000"><DT> ■ <TT>modf( x, y )</tt> ■</font>
+<DD> x の小数部を返し，ポインタ y の差す場所に整数部を入れる．△
+<P>
+
+<font color="#ff0000"><DT> ■ <TT> ldexp(x, y) </tt>■</font>
+<DD> x・(2のy乗) を求める返す． ただし y は整数でなければならない．
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+
+int 
+main( void )
+{
+    double x, z;
+    int y;
+
+    x = 5.0;
+    y = 3;
+    z = ldexp( x, y );
+    printf( "%f * 2^%d は %f です。 ", x, y, z );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+	
+<font color="#ff0000"><DT> ■ <TT> log(x) </tt> ■</font>
+<DD>  x の自然対数(LOGarithm) (底はe)．ただし x > 0.0 でなければならない
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+
+int 
+main( void )
+{
+    double x, y;
+
+    x = 15.0;
+    y = log( x );
+    printf( "%f の自然対数は %f です。", x, y );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+
+
+
+<font color="#ff0000"><DT> ■<TT> log10(x) </tT>■</font>
+<DD> x の常用対数(LOGaritm 10) (底は10.0)．x > 0.0
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+
+int 
+main( void )
+{
+    double x, y;
+
+    x = 4.0;
+    y = log10( x );
+    printf( "%f の 常用対数は %f です。\n", x, y );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+
+<font color="#ff0000"><DT> ■<TT>frexp(x, y)</tt>■</font>
+<DD> xの正規化分数を返し，ポインタyの差す場所に2の累乗数を入れる．△
+<P>
+
+<font color="#ff0000"><DT> ■fabs(x)■</font>
+<DD> x の絶対値(Float ABSolute)を求めます。
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+
+int 
+main( void )
+{
+    double x, y;
+
+    x = -5.6;
+    y = fabs( x );
+    printf( "%f の絶対値は %f です。\n", x, y );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+
+<font color="#ff0000"><DT> ■<tt>ceil( x )</tt> および <TT>floor( x )</tt>■</font>
+<DD> ceil( x ) は x 以上の最小の整数を求めます。要は切り上げです。
+<DD> floor( x ) は x 以下の最小の整数を求めます。これは切り捨てです。
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+
+int 
+main( void )
+{
+    double x, y;
+
+    x = 4.3;	
+    y = ceil( x );
+    printf( "%f を切り上げると %f になります。", x, y );
+    y = floor( x );
+    printf( "%f を切り捨てると %f になります。", x, y );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+
+<font color="#ff0000"><DT> ■ <TT> sin( x )</tt>, <tt> cos( x )</tt>, および <TT>tan( x )</tt>■</font>
+<DD> <TT>sin(x)</tt> は x の正弦(SINe)を求めます。
+<DD> <TT>cos(x)</tt> は x の余弦(COSine)を求めます。
+<DD> <TT>tan(x)</tt> は x の正接(TANgent)を求めます。
+<DD> x の単位はラジアンで、解釈されます。
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+#deifne PI 3.141592
+
+int 
+main( void )
+{
+    double x, y;
+
+    x = 0.3 * pi;
+    y = sin( x );
+    printf( "%f [rad] の正弦は %f です。\n", x, y );
+    y = cos( x );
+    printf( "%f [rad] の余弦は %f です。\n", x, y );
+    y = tan( x );
+    printf( "%f [rad] の正接は %f です。\n", x, y );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+
+
+<font color="#ff0000"><DT> ■ <tt>asin(x)</tt> ■</font>
+<DD> 正弦の逆関数(Arc SINe)． 関数の答は単位は[-π/2, π/2]ラジアンの範囲．
+<DD> x は -1 ≦ x ≦ +1 を満たさないといけない
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+#define PI 3.141592
+
+int 
+main( void )
+{
+    double x, y;
+    x = 0.3 * PI;
+
+    y = sin( x );  
+    printf( "%f [rad] の正弦は %f です。\n", x, y );    
+    x = asin( y );
+    printf( "%f の逆正弦は %f [rad] です。", y, x );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+<font color="#ff0000"><DT> ■ <tt>acos(x)</tt> ■</font>
+<DD> 余弦の逆関数(Arc COSine)．返ってくる答は [0, π] ラジアンの範囲．
+<DD> x は -1 ≦ x ≦ +1 を満たさないといけない。
+<DD> 例
+<table border="2">
+<tr><td>
+<PRE>
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+#define PI 3.141592
+
+int ]
+main( void )
+{
+    double x, y;
+
+    x = 0.3 * PI;
+
+    y = cos( x );  
+    printf( "%f [rad] の余弦は %f です。\n", x, y );    
+    x = acos( y );
+    printf( "%f の逆余弦は %f [rad] です。", y, x );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+<font color="#ff0000"><DT> ■ <tt>atan( z ), および atan2( y, x )</tt> ■</font>
+<DD> 正接の逆関数(Arc TANgent)。返ってくる答の範囲が違う。
+<DD> ベクトル ( x, y ) が原点となす角度を返す。ただし z = y/x とする。
+<DD> <tt>atan( z )</tt> が返す答の範囲は [-π/2, π/2] ラジアンの範囲にある。
+<DD> <tt>atan2( y, x )</tt> が返す答の範囲は [-π, π] ラジアンの範囲にある。
+<DD> 例 <tt>atan()</tt> は 答がπだけずれていることに注意
+<table border="2">
+<tr><td>
+<PRE> 
+#include &lt;stdio.h&gt
+#include &lt;math.h&gt
+#define PI 3.141592
+
+int 
+main( void )
+{
+    double x, y, z, c, s;
+
+    x = 0.8 * pi;
+
+    s = sin( x );
+    c = cos( x );
+    z = s / c;      /* ← tan(x) = sin(x) / cos(x) と同じ*/
+    printf( "%f [rad] の正接は %f です。\n", x, z );
+
+    y = atan( z );
+    printf( "%f [rad] の逆正接(atan()による)は %f です\n", z, y );
+
+    y = atan2( s, c );
+    printf( "%f [rad] の逆正接(atan2()による)は %f です\n", z, y );
+    return 0;
+}
+</PRE>
+</td></tr>
+</table>
+<P>
+
+<font color="#ff0000"><DT> ■ <tt> sinh(x), cosh(x) および cosh(x) </tt>■</font>
+<DD> x の双曲正弦(Hypabolic SINe)．
+     <tt> ( exp( x ) - exp( -x ) ) / 2.0 </tt>
+<DD> x の双曲余弦(Hypabolic COSine)．
+     <tt> ( exp( x ) + exp( -x ) ) / 2.0 </tt>
+<DD> x の双曲正接(Hypabolic COSine)．
+     <tt> sinh( x ) / cosh( x ) </tt>
+
+<P>
+</DL>
+<P>
+<H4><TT>
+<BR>
+</TT></h4>
+
+<a href="../index.html">戻る</a>
+<hr />
+このページへのお問い合わせは君塚(<a href="mailto:kimizuka[atmark]me.es.osaka-u.ac.jp">
+kimizuka[atmark]me.es.osaka-u.ac.jp</a>)まで<br />
+
+<br />$Last Updated: Sep 25 2008 $
+
+</body>
+</html>

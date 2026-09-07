@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+  <head>
+    <title>曲線の描き方</title>
+  </head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <body>
+    <h1>曲線の描き方</h1>
+
+曲線をコンピュータ上で正確に描くことはできません。しかしながら、細かな直線
+をつなぐことで、曲線を近似することが可能です<p>
+まず、円を描くプログラムを考えてみましょう。円は、正Ｎ角形で近似することが
+できます。もちろん、このＮの値が小さいときは（例えば正３角形や正４角形）円の
+ように見えませんが、Ｎの値をどんどん大きくすると円と見なすことができます。<p>
+<img src="./circle.jpg"><br>
+左から順に、正3角形、正4角形、正8角形、正16角形、正32角形<p>
+
+では、まず正32角形の頂点を描くプログラムを示します。
+<hr><ul><pre>
+#include &lt;stdio.h>
+#include &lt;math.h>
+#include &lt;handy.h>
+
+#define  PI     3.141592653589793
+#define WIDTH   500.0                   /* Windowの幅*/
+#define HEIGHT  500.0                   /* Windowの高さ*/
+
+int  main(void)
+{
+    int w;
+    double x0, y0, r, x, y, t;
+    int i,imax;
+
+    w = HgWOpen( 100.0, 100.0, WIDTH, HEIGHT );
+    HgWInitEPS(w,"hg_circle.eps");      /* eps ファイルで保存 */
+
+    /* Windowの中央を円の中心とする*/
+    x0=WIDTH/2.0;
+    y0=HEIGHT/2.0;
+
+    /* 円の半径を100とする */
+    r=100.0;
+
+    /* 円を３２分割する */
+    imax=32;
+
+    for ( i = 1; i &lt;= imax; i++ ) {
+        t = 2.0*PI/imax*i;
+        x = x0 + r*cos(t);
+        y = y0 + r*sin(t);
+        HgWCircleFill(w, x, y, 4.0);
+    }
+
+    getchar();
+    HgWClose(w);
+    return 0;
+}
+
+以下が、実行例です。
+<img src="./circle0.jpg">
+</ul></pre>
+
+これらの各頂点を直線で結ぶことで円を描くことができます。<br>
+しかしながら、直線を描くためには２つの座標が必要です。
+forループの内部では、(x,y)で第i番目の頂点をあらわしていますが、
+一個前の頂点、すなわちi-1番目の頂点を(xPrev, yPrev)で覚えさせて
+直線を描きます。
+
+<hr><ul><pre>
+#include &lt;stdio.h>
+#include &lt;math.h>
+#include &lt;handy.h>
+
+#define  PI     3.141592653589793
+#define WIDTH   500.0                   /* Windowの幅*/
+#define HEIGHT  500.0                   /* Windowの高さ*/
+
+int  main(void)
+{
+    int w;
+    double x0, y0, r, x, y, t, xPrev, yPrev;
+    int i,imax;
+
+    w = HgWOpen( 100.0, 100.0, WIDTH, HEIGHT );
+    HgWInitEPS(w,"hg_circle.eps");      /* eps ファイルで保存 */
+
+    /* Windowの中央を円の中心とする*/
+    x0=WIDTH/2.0;
+    y0=HEIGHT/2.0;
+
+    /* 円の半径を100とする */
+    r=100.0;
+
+    /* 円を３２分割する */
+    imax=32;
+    
+    xPrev = x0 + r*cos(0.0);
+    yPrev = y0 + r*sin(0.0);
+
+    for ( i = 1; i &lt;= imax; i++ ) {
+        t = 2.0*PI/imax*i;
+        x = x0 + r*cos(t);
+        y = y0 + r*sin(t);
+        HgWLine(w, x, y, xPrev, yPrev);
+        xPrev = x;
+        yPrev = y;
+    }
+
+    getchar();
+    HgWClose(w);
+    return 0;
+}
+
+<img src="./circle1.jpg">
+</pre></ul>
+    <hr>
+<!-- Created: Thu Dec  7 03:11:49 GMT 2000 -->
+<!-- hhmts start -->
+Last modified: Thu Dec  7 04:10:33 GMT 2000
+<!-- hhmts end -->
+  </body>
+</html>

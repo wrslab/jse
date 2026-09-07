@@ -1,0 +1,287 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Handy Graphicsの使い方</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body bgcolor="#EEEEEE">
+
+<h1>Handy Graphicsの使い方</h1>
+
+
+<ul>
+ <li><a href="#window">Windowと座標</a></li>
+ <li><a href="#function">授業で使用するHandy Graphics 関数一覧</a></li>
+     <p>
+     <ul>
+      <li><a href="#prehgfunc">Handydy Graphics使用の準備、使用後の処理</a></li>
+      <li><a href="#fundfunc">基本的なHandy Graphics 関数</a></li>
+      <li><a href="#otherfunc">そのほかのHandy Graphics 関数</a></li>
+     </ul>
+     </p>
+ <li><a href="./hg_area.html">描画座標範囲の注意点</a></li>
+ <li><a href="./imageview.html">画像ファイルの読み方と印刷の仕方</a></li>
+ <li><a href="./hg_curve.html">曲線の描き方</a></li>
+</ul>
+
+<a href="../../index.html">戻る</a>
+<hr />
+<ul>
+ <li><h2><a name="window">ウインドウと座標</a></h2></li>
+     <p>
+     Handy Graphics では，ディスプレイ上に表示されるウインドウの位置を指定
+     するためのスクリーン座標と，ウィンドウ内の座標原点を指定するためのウ
+     インドウ座標を用いる．
+     </p>
+     <ul>
+      <li>スクリーン座標</li>
+	  <p>
+	  ディスプレイの左下を原点(0,0)として，右方向を正とするx軸，上方向
+	  を正とするy軸とした座標．単位は画素．
+	  </p>
+      <li>ウィンドウ座標</li>
+	  <p>
+	  ウインドウ内の描画可能な領域の左下を原点(0,0)として，右方向を正
+	  とするx軸，上方向を正とするy軸とした座標．単位は画素．
+     </ul>
+     
+     <center>
+      <img src="./screen.jpg">
+     </center>
+     <hr>
+ <li><h2><a name="function">主なHandy Graphics 関数一覧</a></h2></li>
+     <ul>
+
+      <li><h3><a name="prehgfunc">Handydy Graphics使用の準備，使用後の処理</a></h3></li>
+	  <p>
+	  はじめは，以下のテンプレートを用いてHandy Graphics関数を用いてく
+	  ださい．<br />
+	  <a href="./hg_template1.c">図形を描画するためのテンプレート
+	  </a><br />
+	  <a href="./hg_template2.c">図形をファイルに保存するためのテンプレー
+	  ト</a><br />
+
+	  なお，画像ファイルはファイルマネージャーからダブルクリックすると，
+	  自動的にgvによって読み込まれ表示されます．（ただし，拡張子が
+	  「.eps」であること．）
+	  なお，現時点では画像ファイルでは日本語が表示できません（したがっ
+	  て，プリントアウトしても文字化けする）．課題では，日本語を使わな
+	  いようにしてください．
+	  </p>
+	  
+	  <ul>
+	   <li>新しいウィンドウを開く</li>
+	       <p>
+	       <table border>
+		<tr>
+		 <th colspan=2>
+		  HgWOpen(ウインドウの左座標, ウィンドウの下座標, ウインドウ
+	       の幅, ウィンドウの縦)
+		 </th>
+		</tr>
+		<tr>
+		 <td>引数</td>
+		 <td>
+		  実数型．</br>
+		  HgWOpenで開くウィンドウのスクリーン座標．
+		 </td>
+		</tr>
+		<tr>
+		 <td>戻値</td>
+		 <td>
+		     整数型．<br />
+		     HgWOpenは複数のウィンドウを開くことができる．<br />
+		     他の図形描画関数が，どのウィンドウに対して動作するか
+		     他の関数はこの戻値を使って表す．
+		 </td>
+		</tr>
+	       </table>
+	       </p>
+
+	   <li>ウィンドウを閉じる</li>
+	       <p>
+	       <table border>
+		<tr>
+		 <th colspan=2>
+		   HgWClose(w)
+		 </th>
+		</tr>
+		<tr>
+		 <td>引数</td>
+		 <td>
+		  整数型．</br>
+		  HgWOpenの戻値で，どのウィンドウを閉じるか指定する．
+		 </td>
+		</tr>
+	       </table>	 
+	       </p>
+	       HgWClose(w)
+	       </p>
+ 
+	   <li>ファイルへ保存するための準備</li>
+	       <p>
+	       <table border>
+		<tr>
+		 <th colspan=2>
+		   HgWInitEPS(w,"ファイル名.eps")
+		 </th>
+		</tr>
+		<tr>
+		 <td>引数</td>
+		 <td>
+		  w: 整数型．</br>
+		  HgWOpenの戻値で，どのウィンドウの内容を描画するか指定する．
+		  <br/>
+		  "ファイル名.eps":文字型配列</br>
+		 </td>
+		</tr>
+	       </table>
+	       HgWClose(w); を実行した時の内容がファイルに保存されます．
+	       <br />
+
+	       必ず，ファイル名はダブルクォーテーション「"」で囲んで，
+	       ファイル名の拡張子を「.eps」としてください．拡張子を付け
+	       ることで，ファイルビューワーでダブルクリックすると，自動
+	       的にファイルが描画されます．なお，「"」は日本語モードで
+	       入力せず，必ず「英語」モードで入力すること．
+	       </p>
+	  </ul>
+<hr>
+
+      <li><h3><a name="fundfunc">基本的なHandy Graphics 関数
+	   </a></h3></li>
+	  <p>
+	  以下に示す関数の座標は，すべてウィンドウ座標である．<br />
+	  ウインドウ座標を示すときは，必ず実数(小数点の付いた数）を用いる
+	  こと．<br />
+	  また，第一引数 w は，描画するウインドウを表し，HgWOpenの戻値を
+	  引数として渡す．<br />
+	  (各関数をクリックすると使用例が表示されます．)
+	  </p>
+	  <ul>
+	   <li> 直線を引く</li>
+		<p>
+		<a href="./hg_line.c">
+		HgWline(w, 始点x座標, 始点y座標, 終点x座標, 終点y座標)</a><br />
+		<a href="./hg_line.jpg">（実行結果）</a>
+		</p>
+
+	   <li> 円を描く, 塗りつぶした円を描く</li>
+		<p>
+		<a href="./hg_circle.c">
+		HgWCircle(w, 中心x座標, 中心y座標, 半径)<br />
+		HgWCircleFill(w, 中心x座標, 中心y座標, 半径)</a><br />
+		<a href="./hg_circle.jpg">（実行結果）</a>
+		</p>
+
+	   <li> 四角形を描く, 塗りつぶした四角形を描く</li>
+		<a href="./hg_box.c">
+		HgWBox(w, 左下点x座標, 左下点y座標, 横幅, 縦幅)<br />
+		HgWBoxFill(w, 左下点x座標, 左下点y座標, 横幅, 縦幅)</a><br />
+		<a href="./hg_box.jpg">（実行結果）</a>
+		</p>
+
+	   <li> 文字列を描く</li>
+		<p>
+		<a href="./hg_text.c">
+		HgWText(w, 左下のx座標, 左下のy座標, 文字列)</a><br />
+		<a href="./hg_text.jpg">（実行結果）</a>
+		</p>
+
+	  </ul>
+	  <hr />
+      <li><h3><a name="otherfunc">そのほかのHandy Graphics 関数
+	   </a></h3></li>
+	  <p>
+	  以下に示す関数の座標は，すべてウィンドウ座標である．<br />
+	  ウインドウ座標を示すときは，必ず実数(小数点の付いた数）を用いる
+	  こと．<br />
+	  また，第一引数 w は，描画するウインドウを表し，HgWOpenの戻値を
+	  引数として渡す．<br />
+	  (各関数をクリックすると使用例が表示されます．)
+	  <ul>
+	   <li>円弧を描く</li>
+	       <p>
+	       <a href="./hg_arc.c">
+	       HgWArc(w, 中心x座標, 中心y座標, 半径, 始点角度, 終点角度)</a><br />
+	       <a href="./hg_arc.jpg">（実行結果）</a>
+	       </p>
+     
+	   <li>扇型を描く, 塗りつぶした扇形を描く</li>
+	       <p>
+	       <a href="./hg_fan.c">
+	       HgWFan(w, 中心x座標, 中心y座標, 半径, 始点角度, 終点角度)<br />
+	       HgWFanFill(w, 中心x座標, 中心y座標, 半径, 始点角度, 終点角度)</a><br />
+	       <a href="./hg_fan.jpg">（実行結果）</a>
+	       </p>
+	       
+	   <li>多角形を描く, 塗りつぶした多角形を描く</li>
+	       <font color="red">配列を学んでから使用してください</font>
+	       <p>
+	       <a href="./hg_polygon.c">
+	       HgWPoligon(w, 頂点の数, 頂点のx座標を格納した配列, 頂点のy座標を格納した配列)<br>
+	       hgWPolygonFill(w, 頂点の数, 頂点のx座標を格納した配列, 頂点のy座標を格納した配列)</a><br>
+	       <a href="./hg_polygon.jpg">（実行結果）</a>
+	       </p>
+
+	   <li>ウィンドウ内を消去する</li>
+	       <p>
+	       HgWClear(w) <br />
+	       HgWClearを呼び出すと，ウィンドウ内が消去されます
+	       </p>
+
+	   <li>色を指定する</li>
+	       <p>
+	       <a href="./hg_color.c">
+	       HgGray(グレーの濃度)<br />
+	       HgRGB(赤色の濃度, 緑色の濃度, 青色の濃度)<br />
+	       HgWClolor(w, 色)</a><br />
+	       グレー濃度：　0.0~1.0の値<br />
+	       各色の濃度：　0.0~1.0の値<br />
+	       色：　　　　　HgGray,HgRGBの戻値<br />
+	       </p>
+
+
+	   <li>線の太さを指定する</li>
+	       <p>
+	       <a href="./hg_width.c">HgWWidth(w, 線の太さ)</a><br />
+	       線の太さは，0.0以上の実数で指定<br />
+	       <a href="./hg_width.jpg">（実行結果）</a>
+	       </p>
+	       
+<!--	       
+	   <li>文字の種類とフォントサイズ指定</li>
+		<font color = "red">現在は使えません</font>
+	       <p>
+	       <a href="http://sml.me.es.osaka-u.ac.jp/jse/examples/tips/hg_examples/hg_font.c">
+	       HgWFont(w, フォント名, フォントサイズ)</a><br />
+	       <a href="http://sml.me.es.osaka-u.ac.jp/jse/examples/tips/hg_examples/hg_font.jpg">（実行結果）</a>
+	       </p>
+	       <p>
+	       フォント名は以下のものから選んでください.
+	       <br />
+	       
+     <table border><caption>フォント名一覧</caption>
+     <th>フォント</th><th>細字体</th><th>斜体</th><th>太字体</th><th>太字斜体</th>
+     <tr>
+     <th>Times</th><td>HG_T</td><td>HG_TI</td><td>HG_TB</td><td>HG_TBI</td>
+     </tr><tr>
+     <th>Helvetica</th><td>HG_H</td><td>HG_HI</td><td>HG_HB</td><td>HG_HBI</td>
+     </tr><tr>
+     <th>Courier</th><td>HG_C</td><td>HG_CI</td><td>HG_CB</td><td>HG_CBI</td>
+     </tr>
+     </table>
+
+-->
+	  </ul>
+     </ul>
+</ul>
+<a href="../../index.html">戻る</a>
+<hr />
+このページへのお問い合わせは君塚(<a href="mailto:kimizuka[atmark]me.es.osaka-u.ac.jp">
+kimizuka[atmark]me.es.osaka-u.ac.jp</a>)まで<br />
+
+<br />$Last Updated: Sep 25 2008 $
+
+</body>
+</html>

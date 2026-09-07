@@ -1,0 +1,273 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>UNIX Command</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body bgcolor="#EEEEEE">
+
+<h1>代表的なUNIXのコマンド</h1>
+
+<ul>
+ <ul>
+ <li><a href="#ls">ls</a></li>
+ <li><a href="#cat">cat, less, more</a></li>
+ <li><a href="#pwd">pwd</a></li>
+ <li><a href="#cd">cd</a></li>
+ <li><a href="#mkdir">mkdir</a></li>
+ <li><a href="#cp">cp</a></li>
+ <li><a href="#mv">mv</a></li>
+ <li><a href="#rm">rm</a></li>
+ <li><a href="#man">man, jman</a></li>
+ </ul>
+ <li><a href="#redirect">リダイレクト</a></li>
+ <li><a href="#pipe">パイプ</a></li>
+</ul>
+
+<a href="../index.html">戻る</a>
+<hr />
+
+
+<a name="unix"><h2>UNIXコマンド</h2></a>
+<ul>
+ <dl>
+  <dt><h3><a name="ls">ls</a></h3> <dd>ディレクトリの中を見る
+       <p>
+       <table>
+	<tr><th align="left">ls [option] [directory]</th></tr>
+	<tr><td>
+	     [directory] には，デイレクトリ等のパスを与える<br>
+	     [directory] を省略すると．カレントディレクトリの情報を表示する
+	    </td></tr>
+       </table>
+       </p>
+       <p>
+       <table border>
+	<caption> option の種類とその動作内容</caption>
+	<tr><th>option</th><th>内容</th></tr>
+	<tr><td> -a </td><td>"."で始まるファイルも表示</td></tr>
+	<tr><td> -R </td><td>ディレクトリの中身も表示</td></tr>
+	<tr><td> -l </td><td>ファイルの種類なども表示</td></tr>
+       </table>
+       </p>
+       
+  <dt><h3><a name="cat">cat, less, more</a> </h3><dd> ファイルの中身を見る
+       <p>
+       <table>
+	<tr><th align="left">cat [filename] </th></tr>
+	<tr><td>あるファイルの中身を見る．ただし，一瞬にして内容が表示さ
+	     れるため，大きなファイルでは読めないことが多い．このような
+	     ときは，less や moreを用いる．
+	    </td></tr>
+       </table>
+       </p>
+       
+       <p>
+       <table>
+	<tr><th align="left">less [filenmame]，または more [filename]</th></tr>
+	<tr><td>less を用いるとファイルの内容を，１ページずつ見せてくれる．
+	     <br>
+	     次のページを見るときには「スペース」または "f" を押す．
+	     <br>
+	     前のページを見るときには "b" を押し，終了するときには "q" を
+	     押す．
+	     <br>
+	     less では，矢印キーも使用できる．また文字列検索も可能である．
+	    </td></tr>
+       </table>
+       </p>
+       
+  <dt><h3><a name="pwd">pwd</a></h3><dd> 現在のディレクトリ(カレントディレクトリ)を表示
+       <p>
+       <table>
+	<tr><th align="left">pwd </th></tr>
+	<tr><td>現在作業を行っているディレクトリをカレントディレクトリと
+	     いう．このカレントディレクトリを示す.
+	    </td></tr>
+       </table>
+       </p>
+       
+  <dt><h3><a name="cd">cd</a></h3><dd> カレントデイレクトリを移動する
+       <p>
+       <table>
+	<tr><th align="left">cd [directory] </th></tr>
+	<tr><td>カレントディレクトリを移動する．
+	     [directory]には，<a href="./path/index.html">絶対pathや相対
+	     path</a>を書く．<br>
+	     cd ~  自分のホームディレクトリへ移動する．<br>
+	     cd .. 一つ上のディレクトリへ移動する．<br>
+	    </td></tr>
+       </table>
+       </p>
+       
+  <dt><h3><a name="mkdir">mkdir</a></h3><dd> デイレクトリを作成する
+       <p>
+       <table>
+	<tr><th align="left">mkdir [directory] </th></tr>
+	<tr><td>ディレクトリを作成する．
+	     pathを指定しない場合，カレントディレクトリにディレクトリを作成<br>
+	     パスを指定するとそのパスにディレクトリを作る．
+	    </td></tr>
+       </table>
+       </p>
+       
+  <dt><h3><a name="cp">cp</a></h3><dd> ファイルをコピーする
+       <p>
+       <table>
+	<tr><th align="left"> cp [option] [source-file] [directry]<br>
+	     cp [option] [source-file] [new-filename]</th></tr>
+	<tr><td>ファイルをコピーする．<br>
+	     上の例では，[source-file] のファイル名で，[directry]の中にコ
+	     ピーする．<br>
+	     また，下の例では，[source-file]を[new-filename]の名前でコピーする.
+	    </td></tr>
+       </table>
+       </p>
+       
+       <p>
+       <table border>
+	<caption>代表的なoptionとその動作内容</caption>
+	<tr><th> option</th><th>内容</th></tr>
+	<tr><td> -i </td><td>上書きを確認する</td></tr>
+	<tr><td> -r </td><td>ディレクトリの中までコピーする</td></tr>
+       </table>
+       </p>
+       
+  <dt><h3><a name="mv">mv</a></h3><dd> ファイルを移動する
+       <p>
+       <table>
+	<tr><th align="left"> mv [source-file] [directry]<br>
+	     mv [source-file] [new-filename]</th></tr>
+	<tr><td>ファイルを移動する．<br>
+	     上の例では，[source-file] のファイル名で，[directry]の中に移
+	     動する．<br>
+	     また，下の例では，[source-file]を[new-filename]の名前で移動
+	     する.<br>
+	     cp とは異なり，移動後[source-file]は消去される．
+	    </td></tr>
+       </table>
+       </p>
+       
+  <dt><h3><a name="rm">rm</a></h3><dd> ファイルを消去する
+       <p>
+       <table>
+	<tr><th align="left"> rm [option] [filename]</th></tr>
+	<tr><td> 指定されたファイルを消去する<br>
+	    </td></tr>
+       </table>
+       </p>
+       
+       <p>
+       <table border>
+	<caption>代表的なoptionとその動作内容</caption>
+	<tr><td> -r </td><td>ディレクトリの中身を消去する</td></tr>
+	<tr><td> -f </td><td>書き込み禁止ファイルも消去する</td></tr>
+	<tr><td> -i </td><td>削除前に確認する</td></tr>
+       </table>
+       </p>
+       
+  <dt><h3><a name="man">man，jman</a></h3><dd> マニュアルを見る
+       <p>
+       <table>
+	<tr><th align="left"> man [command]，jman [command] </th></tr>
+	<tr><td>コマンドのマニュアルを読むことができる．なお，less が働いているので，
+	     less の要領で前のページや次のページを読むことができる．
+	     <br>
+	     jman は日本語表示
+	    </td></tr>
+       </table>
+       </p>
+ </dl>
+       <hr />
+ <h2><li><a name="redirect">リダイレクト</a></li></h2>
+      <p>
+      UNIXには，標準入力，標準出力が設定されています．
+      通常，標準入力はキーボード，標準出力はディスプレイです．
+      </p>
+      
+      <p>
+      
+      「echo」 コマンドは，タイプ以下に書かれた文字列を標準出力に出力
+      します．
+      <table border>
+       <tr><td>
+	    $echo test test test [enter]<br>
+	    test test test
+	   </td></tr>
+      </table>
+      </p>
+      
+      <p>
+      
+      これを
+      <table border>
+       <tr><td>
+	    $echo test test test > test.txt [enter]<br>
+	   </td></tr>
+      </table>
+      としてみましょう．何も表示されません．
+      しかし，test.txtというファイルが作成されているはずです．
+      gEditや，emacsで確かめてみてください．
+      </p>
+      
+      <p>
+      
+      「>」はリダイレクトと呼ばれます．先の例では，標準出力をディスプ
+      レイからファイルに変換しています．
+      このために，新しくファイルが作成されているのです．
+      </p>
+      
+      <p>
+      リダイレクトには，他に「<」や「>>」があります．
+      この意味に付いては，各自調べてみてください．
+      </p>
+      
+<h2><li><a name="pipe">パイプ</a></li></h2>
+      <p>
+      リダイレクトは，一つのコマンドの標準出力を変更するものでした．
+      これに対して，あるのコマンドの標準出力を，他のコマンドの標準入力
+      につなげるのがパイプです．
+      <table border>
+       
+       <tr><td>
+	    $ls -al [enter]<br>
+	   </td></tr>
+      </table>
+      
+      <table border>
+       <tr><td>
+	    $ls -al | more[enter]<br>
+	    
+	   </td></tr>
+      </table>
+      を比べてください．
+      </p>
+      
+      <p>
+      「ls -al」で，カレントディレクトリ中のディレクトリやファイルが示
+      されます．
+      ディレクトリやファイルが多いと，1画面では収まりきらずに，スクロー
+      ルアウトしてしまって，すべての情報を読みきることができません．
+      「more」コマンドは，ファイル等の中身を1画面ずつ示すものですが，
+      これら2つのコマンドをパイプによってつなげることで，カレントディ
+      レクトリ中のディレクトリやファイルを1画面ずつ表示できるようにな
+      ります．
+      </p>
+      
+      <p>
+      UNIXでは，小さな部品(コマンド)を作って，それらをつなぎ合わせるこ
+      とで複雑な制御まで可能にします．
+      </p>
+      
+</ul>
+
+<a href="../index.html">戻る</a>
+
+<hr />
+このページへのお問い合わせは君塚(<a href="mailto:kimizuka[atmark]me.es.osaka-u.ac.jp">
+kimizuka[atmark]me.es.osaka-u.ac.jp</a>)まで<br />
+
+<br />$Last Updated: Sep 25 2008 $
+
+</body>
+</html>

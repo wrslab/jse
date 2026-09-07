@@ -1,0 +1,67 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>xemacsの日本語コード変換</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body bgcolor="#EEEEEE">
+
+<h1>xemacsの日本語コード変換</h1>
+<p>
+コンピュータは01のデジタル信号で情報を表していますが，
+日本語を表現するためのコード体系が複数あります．
+例えば，Windows等では Shift-JISと呼ばれるコード体系が
+使われています．
+一方，サイバーメディアセンターのLinuxでは，EUC-JP
+と呼ばれる文字コードが使用されています．
+したがって，これらの文字コードの変換がうまく行っていないと，
+C言語のプログラムが動作しません．
+</p>
+
+<p>
+<a href="./index.html">xemacsの設定</a>を行わずにソースファイルを
+作ってしまうと，EUC-JP以外の文字コードが使用されるようです
+（多分Shift-JISだと思いますが，確認できていません）．
+したがって，一度できてしまったファイルを実行するためには，
+文字コードを変換する必要があります．
+</p>
+
+<p>
+<a href="./index.html">xemacsの設定</a>を行っていると，
+再読み込みの後，再保存すれば（内容の変更がないかぎり保存され
+ないことに注意）EUC-JPに変換されるようです．
+しかし，なんらかの影響で文字コードが変更されない場合は，
+以下の手順で文字コードの変換を行ってください．
+</p>
+
+<ol>
+ <li>文字コードを変換したいファイルを開く</li><br />
+
+ <li>[編集]->[Multilingal("Mule")]->[Set Coding System of Buffer file]</li>
+      <p>
+      <img src="./set-coding.jpg" > <br />
+      </p>
+ <li>ミニバッファに "ecu-jp-unix" と記述 <br />
+      <p>
+      <img src="./set-coding2.jpg" > <br />
+      </p>
+
+ <li>左下の部分が Ja/EUC となっていればOK．</li> 
+     <img src="./euc-jp.jpg"><br />   <br />   
+
+ <li>保存しなおす．</li>
+     <font color="red">ただし，変更がないと保存されないため，
+      一部変更を行った上で保存する</font>． <br />   
+      （改行やスペースなどを一度入れて，その後それらを消去すると良い）
+      
+</ol>
+
+<a href="../../index.html">戻る</a>
+<hr />
+このページへのお問い合わせは君塚(<a href="mailto:kimizuka[atmark]me.es.osaka-u.ac.jp">
+kimizuka[atmark]me.es.osaka-u.ac.jp</a>)まで<br />
+
+<br />$Last Updated: Sep 25 2008 $
+
+</body>
+</html>

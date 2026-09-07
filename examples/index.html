@@ -1,0 +1,281 @@
+<!doctype html public "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>情報処理演習 資料・教材</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body bgcolor="#EEEEEE">
+
+
+<h1>情報処理演習 資料・教材</h1>
+<ul>
+ <li><b>Tips of linux system</b></li>
+      <ul>
+<!--
+       <li><a href="./tips/windows-c.html">自宅でC言語の自習</a></li>
+       <li><a href="./tips/xemacs2/menu.html">MenuへのXemacsの登録</a>
+	    (2006.10.11 update)</li>
+       <li><a href="./tips/xemacs2/japanese-code.html">
+	    Xemacsによる日本語コードの変更</a>
+	    (2006.10.11 update)</li>
+       <li><a href="./tips/xemacs/index.html">XEmacsの使い方</a></li>
+       <li><a href="http://flex.ee.uec.ac.jp/texi/emacs-jp/emacs-jp_toc.html">
+	   xemacs マニュアル (link) </a>(2006.10.11 update)</li>
+       <li><a href="./tips/xemacs2/index.html">XEmacsの設定
+ 	    </a>
+	    (2007.10.11 update)</li>	    
+	    <font color="red"> (日本語が入ったソースがコンパイルができない人，
+	    XEmacsに色が付かない人, 印刷できない人)</font>
+ -->
+       <li><a href="./tips/command.html">代表的なUNIXコマンド</a></li>
+       <li><a href="./tips/math.html">数学関数</a></li>
+       <li><a href="./tips/hg_examples/index.html">
+	      図形描画(Handy_Graphics)の使い方</a></li>
+       <li><a href="./tips/jman.html">C言語の関数の仕様を調べる</a>
+	    (2006.10.23 update)</li>
+      </ul>
+      
+ <li><b>レポート提出形式</b></li>
+      <ul>
+       <li><a href="../kadai/sampleV3.c">
+	    C言語のレポートの提出形式サンプル </a></li>
+      </ul>
+ <li><b>例題</b></li>
+      
+      <ul>
+       <li><a href="#example1">導入</a></li>
+       <li><a href="#example2">制御構造1: 条件分岐</a></li>
+       <li><a href="#example3">制御構造2: 繰り返し</a></li>
+       <li><a href="#example4">制御構造3: 条件分岐と繰り返しの組み合わせ</a></li>
+       <li><a href="#example5">関数その1</a></li>
+       <li><a href="#example6">配列その1</a></li>
+       <li><a href="#example7">関数その2:配列を引数とした関数</a></li>
+       <li><a href="#example8">配列その2: 文字列</a></li>
+<!--
+       <li><a href="#example9">グラフィックス</a></li>
+ -->
+      </ul>
+      
+</ul>
+<a href="../index.html">戻る</a>
+
+<hr />
+<h2>例題</h2>
+<p>
+文字化けする場合は，「view」->「Character Coding」->「Japanese(EUC-JP)」
+としてください．
+</p>
+<p>
+なお，右クリックでダウンロードできます．
+</p>
+<ul>
+ 
+ <li><a name="example1">導入</a></li>
+      <a href="../text/No-1.pdf">text1</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno1/temp1.c">
+	    template1_1.c</a> テンプレート</li>
+       <li><a href="../text/progno1/ex11.c">example1_1.c</a>
+	    一辺とその両端角の角度から面積を計算する</li>
+      </ul>
+      その他の例題
+      <ul>
+       <li><a href="./examples/example11.c">example11.c</a>
+	    Hellow World.</li>
+       <li><a href="./examples/example12.c">example12.c</a>
+	    整数型と実数型，printf</li>
+       <li><a href="./examples/example13.c">example13.c</a>
+ 	    scanf と マクロ定義</li>
+       <li><a href="./examples/example14.c">example14.c</a>
+	    printfによる複数変数の表示</li>
+      </ul>
+
+     <hr />
+ <li><a name="example2">制御構造1: 条件分岐</a></li>
+      <a href="../text/No-2.pdf">text2</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno2/ex21.c">example2_1.c</a>
+	    if ~ else if ~ else: 二つの整数値の比較</li>
+       <li><a href="../text/progno2/ex22.c">example2_2.c</a>
+	    if ~ else if ~ ... ~ else: 成績判定</li>
+      </ul>
+      その他の例題
+      <ul>
+       <li><a href="./examples/example21.c">example21.c</a>
+	    if 文</li>
+       <li><a href="./examples/example22.c">example22.c</a>
+	    if ~ else 文 その1</li>
+       <li><a href="./examples/example23.c">example23.c</a>
+	    if ~ else 文 その2</li>
+      </ul>
+     <hr />
+ <li><a name="example3">制御構造2: 繰り返し</a></li>
+      <a href="../text/No-3.pdf">text3</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno3/ex31.c">example3_1.c</a>
+	    for 文, printfの変換指定子(フィールド長)</li>
+       <li><a href="../text/progno3/ex32.c">example3_2.c</a>
+	    2重ループ その1: 階乗の計算</li>
+       <li><a href="../text/progno3/ex33.c">example3_3.c</a>
+	    2重ループ その2: 10進数 -&gt;16進数変換</li>
+       <li><a href="../text/progno3/ex34.c">example3_4.c</a>
+	    for文 による複利計算</li>
+       <li><a href="../text/progno3/ex35.c">example3_5.c</a>
+	    while文 による複利計算 </li>
+       <li><a href="../text/progno3/ex36.c">example3_6.c</a>
+	    do ~ while文: 漸化式</li>
+      </ul>
+      その他の例題
+     <ul>      
+      <li><a href="./examples/example31.c">example31.c</a>
+	   for 文: s = 1+2+.....10 の計算 </li>
+      <li><a href="./examples/example32.c">example32.c</a>
+	   for 文: 積立貯金を 複利計算</li>
+      <li><a href="./examples/example33.c">example33.c</a>
+	   while文 </li>
+      <li><a href="./examples/example34.c">example34.c</a>
+	   do ~ while 文</li>
+      <li><a href="./examples/example35.c">example35.c</a>
+	   while文と do ~ while 文の違い: while 文</li>
+      <li><a href="./examples/example36.c">example36.c</a>
+	   while文と do ~ while 文の違い: do ~ while 文</li>
+      <li><a href="./examples/example37.c">example37.c</a>
+	   while 文と for 文の置き換え</li>
+      <li><a href="./examples/example38.c">example38.c</a>
+	   テイラー展開: sin の近似式</li>
+     </ul>
+     
+     <hr />
+<li><a name="example4">制御構造3: 条件分岐と繰り返しの組み合わせ</a></li>
+      <a href="../text/No-4.pdf">text4</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno4/ex41.c">example4_1.c</a>
+	    2重ループとif ~ else: 市松模様</li>
+       <li><a href="../text/progno4/ex42.c">example4_2.c</a>
+	    無限ループと break 演算子</li>
+       <li><a href="../text/progno4/ex43.c">example4_3.c</a>
+	    continue 文</li>
+       <li><a href="../text/progno4/ex44.c">example4_4.c</a>
+	    switch case 文</li>
+      </ul>     
+     <hr />
+ 
+
+ <li><a name="example5">関数その1</a></li>
+     <a href="../text/No-5.pdf">text5</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno5/ex51.c">example5_1.c</a>
+	    2つの整数引数のうち小さい値を返す関数</li>
+       <li><a href="../text/progno5/ex52.c">example5_2.c</a>
+	    べき乗を求める関数 ループとの組み合わせ</li>
+       <li><a href="../text/progno5/ex53.c">example5_3.c</a>
+	    関数の引数に関数の戻値を与える</li>
+       <li><a href="../text/progno5/ex54.c">example5_4.c</a>
+	    引数，戻値を持たない関数</li>
+       <li><a href="../text/progno5/ex55.c">example5_5.c</a>
+	    自分自身を呼び出す関数(再帰呼び出し)</li>
+       <li><a href="../text/progno5/ex56.c">example5_6.c</a>
+	    2分法による求解</li>
+      </ul>
+      その他の例題
+      <ul>
+       <li><a href="./examples/example51.c">example51.c</a>
+	    変数の有効範囲(スコープ)</li>
+      </ul>
+
+     <hr />
+ <li><a name="example6">配列その1</a></li>
+     <a href="../text/No-6.pdf">text6</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno6/ex61.c">example6_1.c</a>
+	    配列の各要素の取り扱い:ベクトルの内積</li>
+       <li><a href="../text/progno6/ex62.c">example6_2.c</a>
+	    配列の初期化: あるクラス成績の評価</li>
+       <li><a href="../text/progno6/ex63.c">example6_3.c</a>
+	    乱数の発生と大量データの取り扱い</li>
+       <li><a href="../text/progno6/ex64.c">example6_4.c</a>
+	    2次元配列: 行列の和と差</li>
+       <li><a href="../text/progno6/ex65.c">example6_5.c</a>
+	    2次元配列の初期化と演算: 行列とベクトルの掛け算</li>
+      </ul>      
+     
+     <hr />
+ 
+
+
+ <li><a name="example7">関数その2:配列を引数とした関数</a></li>
+     <a href="../text/No-7.pdf">text7</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno7/ex71.c">example7_1.c</a>
+	    配列の受け渡し: 最小値を求める関数</li>
+       <li><a href="../text/progno7/ex72.c">example7_2.c</a>
+	    配列渡しによる影響(call by reference)</li>
+       <li><a href="../text/progno7/ex73.c">example7_3.c</a>
+	    配列渡しによる逐次探索</li>
+       <li><a href="../text/progno7/ex74.c">example7_4.c</a>
+	    2次元配列の受け渡し</li>
+      </ul>      
+
+   
+     <hr />
+ <li><a name="example8">配列その2: 文字列</a></li>
+      <a href="../text/No-8.pdf">text8</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno8/ex81.c">example8_1.c</a>
+	    getchar による文字の入力</li>
+       <li><a href="../text/progno8/ex82.c">example8_2.c</a>
+	    getchar を用いた文字列の入力関数</li>
+       <li><a href="../text/progno8/ex83.c">example8_3.c</a>
+	    文字列中の小文字を大文字に変換する関数</li>
+      </ul>      
+      その他の例題
+      <ul>
+       <li><a href="./examples/example81.c">example81.c</a>
+	    printfによる1文字出力</li>
+       <li><a href="./examples/example82.c">example82.c</a>
+	    英数文字->アスキーコード</li>
+       <li><a href="./examples/example83.c">example83.c</a>
+	    アスキーコード->英数文字</li>
+       <li><a href="./examples/example84.c">example84.c</a>
+	    printfによる文字列出力</li>
+       <li><a href="./examples/example85.c">example85.c</a>
+	    文字列を扱う関数: strlen</li>
+       <li><a href="./examples/example86.c">example86.c</a>
+	    文字列を扱う関数: strcpy</li>
+       <li><a href="./examples/example87.c">example87.c</a>
+	    文字列を扱う関数: gets</li>
+      </ul>
+     <hr />
+<!--
+ <li><a name="example9">グラフィックス</a></li>
+     <a href="../text/No-9.pdf">text9</a> 付随の例題
+      <ul>
+       <li><a href="../text/progno9/ex91.c">example9_1.c</a>
+	    Kitaro!</li>
+       <li><a href="../text/progno9/ex92.c">example9_2.c</a>
+	    市松模様</li>
+       <li><a href="../text/progno9/ex93.c">example9_3.c</a>
+	    sprintf</li>
+       <li><a href="../text/progno9/ex94.c">example9_4.c</a>
+	    細かな直線による曲線の表現: 円</li>
+       <li><a href="../text/progno9/ex95.c">example9_5.c</a>
+	    細かな直線による曲線の表現: リサージュ図形</li>
+       <li><a href="../text/progno9/ex96.c">example9_6.c</a>
+	    多角形: HgWPolygon</li>
+       <li><a href="../text/progno9/ex97.c">example9_7.c</a>
+	    HgWPolygonと配列</li>
+      </ul>      
+ -->
+</ul>
+
+<p>
+<a href ="../index.html">戻る</a>
+</p>
+<hr />
+このページへのお問い合わせは万(<a href="mailto:wan[at]es.osaka-u.ac.jp">
+wan[at]es.osaka-u.ac.jp</a>)まで<br />
+
+<br />
+
+</body>
+</html>
