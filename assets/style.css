@@ -40,10 +40,11 @@ body {
 header { border-bottom: 2px solid var(--border); padding-bottom: 1.25rem; }
 
 .eyebrow {
-  margin: 0 0 .4rem;
-  font-size: .95rem;
-  letter-spacing: .06em;
-  color: var(--muted);
+  margin: 0 0 .45rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--text);
 }
 
 h1 { margin: 0; font-size: 1.6rem; line-height: 1.45; font-weight: 700; }
